@@ -13,7 +13,7 @@ export let registerThunk = async (user, thunkApi) => {
 
 export let loginThunk = async (user, thunkApi) => {
     try {
-        let { data } = await axios.post('/apis/v1/auths/login', user)
+        let { data } = await axios.post('https://appointmento.herokuapp.com/apis/v1/auths/login', user)
         document.cookie = 'domToken=loggedIn'
         return data.msg
     } catch (error) {
