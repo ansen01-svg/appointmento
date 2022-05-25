@@ -30,7 +30,7 @@ let AddPage = () => {
     let { isEditing, singleAppointment } = useSelector(state => state.aR)
     let params = useGetParams()
     let id = params.get('id')
-console.log(singleAppointment, isEditing)
+
     let [hours, setHours] = useState([])
     let [mins, setMins] = useState([])
     let [zone, setZone] = useState([])
@@ -50,7 +50,7 @@ console.log(singleAppointment, isEditing)
 
     useEffect(() => {
         getTime()
-    }, [])
+    }, [getTime])
 
     useEffect(() => {
         if (id) {
