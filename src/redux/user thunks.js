@@ -1,10 +1,9 @@
 import baseUrl from '../utils/base url';
-import testUrl from '../utils/test url';
 
 
 export let registerThunk = async (user, thunkApi) => {
     try {
-        let { data } = await testUrl.post('/apis/v1/auths/register', user)
+        let { data } = await baseUrl.post('/apis/v1/auths/register', user)
         return data.msg
     } catch (error) {
         return thunkApi.rejectWithValue(error.response.data.msg)
@@ -14,7 +13,7 @@ export let registerThunk = async (user, thunkApi) => {
 
 export let loginThunk = async (user, thunkApi) => {
     try {
-        let { data } = await testUrl.post('/apis/v1/auths/login', user)
+        let { data } = await baseUrl.post('/apis/v1/auths/login', user)
         document.cookie = 'domToken=loggedIn'
         return data.msg
     } catch (error) {
@@ -25,7 +24,7 @@ export let loginThunk = async (user, thunkApi) => {
 
 export let getUserThunk = async (_, thunkApi) => {
     try {
-        let { data } = await testUrl.get('/apis/v1/auths/showUser')
+        let { data } = await baseUrl.get('/apis/v1/auths/showUser')
         return data.user
     } catch (error) {
         return thunkApi.rejectWithValue(error.response.data.msg)
@@ -35,7 +34,7 @@ export let getUserThunk = async (_, thunkApi) => {
 
 export let updateUserThunk = async (user, thunkApi) => {
     try {
-        let { data } = await testUrl.patch('/apis/v1/auths/updateUser', user)
+        let { data } = await baseUrl.patch('/apis/v1/auths/updateUser', user)
         return data.msg
     } catch (error) {
         return thunkApi.rejectWithValue(error.response.data.msg)
@@ -45,7 +44,7 @@ export let updateUserThunk = async (user, thunkApi) => {
 
 export let logoutThunk = async (_, thunkApi) => {
     try {
-        let { data } = await testUrl.delete('/apis/v1/auths/logout')
+        let { data } = await baseUrl.delete('/apis/v1/auths/logout')
         document.cookie='domToken=loggedIn;expires=Thu, 18 Dec 2013 12:00:00 UTC'
         return data
     } catch (error) {
